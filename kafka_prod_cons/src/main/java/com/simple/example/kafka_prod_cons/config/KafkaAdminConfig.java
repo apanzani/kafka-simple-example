@@ -1,5 +1,6 @@
 package com.simple.example.kafka_prod_cons.config;
 
+import com.google.gson.Gson;
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.springframework.context.annotation.Bean;
@@ -22,5 +23,10 @@ public class KafkaAdminConfig {
     public AdminClient adminClient(){
         return AdminClient.create(Map.of(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG,
                 kafkaConfigData.getBootstrapServers()));
+    }
+
+    @Bean
+    public Gson jsonConverter(){
+        return new Gson();
     }
 }

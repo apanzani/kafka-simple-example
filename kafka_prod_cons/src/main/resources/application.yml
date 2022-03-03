@@ -1,6 +1,6 @@
 kafka-producer-config:
   key-serializer-class: org.apache.kafka.common.serialization.StringSerializer
-  value-serializer-class: org.springframework.kafka.support.serializer.JsonSerializer
+  value-serializer-class: org.apache.kafka.common.serialization.StringSerializer
   compression-type: snappy
   acks: all
   batch-size: 16384
@@ -16,6 +16,7 @@ kafka-config:
   topic-name: my-topic
   topic-names-to-create:
     - my-topic
+    - my-topic2
   num-of-partitions: 3
   replication-factor: 1
 
@@ -28,7 +29,7 @@ retry-config:
 
 kafka-consumer-config:
   key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-  value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+  value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
   consumer-group-id: my-group-topic-consumer
   auto-offset-reset: earliest
   specific-avro-reader-key: specific.avro.reader

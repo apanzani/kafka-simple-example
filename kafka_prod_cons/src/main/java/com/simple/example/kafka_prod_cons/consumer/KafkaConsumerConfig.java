@@ -40,14 +40,14 @@ public class KafkaConsumerConfig {
     }
 
     @Bean
-    public ConsumerFactory<String, SimpleModel> consumerFactory(){
+    public ConsumerFactory<String, String> consumerFactory(){
         return new DefaultKafkaConsumerFactory<>(consumerConfigs(), new StringDeserializer(),
-        new JsonDeserializer<>(SimpleModel.class));
+                new StringDeserializer());
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, SimpleModel> kafkaListenerContainerFactory(){
-        ConcurrentKafkaListenerContainerFactory<String, SimpleModel> concurrentKafkaListenerContainerFactory =
+    public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory(){
+        ConcurrentKafkaListenerContainerFactory<String, String> concurrentKafkaListenerContainerFactory =
         new ConcurrentKafkaListenerContainerFactory<>();
 
         concurrentKafkaListenerContainerFactory.setConsumerFactory(consumerFactory());
