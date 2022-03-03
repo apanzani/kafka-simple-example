@@ -16,9 +16,6 @@ public class SimpleModel {
 
     @Override
     public String toString() {
-        return "SimpleModel{" +
-                "field1='" + field1 + '\'' +
-                ", field2='" + field2 + '\'' +
-                '}';
+        return field1 + " " +field2;
     }
 }
