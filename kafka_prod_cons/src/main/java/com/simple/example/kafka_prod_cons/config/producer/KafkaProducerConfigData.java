@@ -1,4 +1,4 @@
-package com.simple.example.kafka_prod_cons.config;
+package com.simple.example.kafka_prod_cons.config.producer;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

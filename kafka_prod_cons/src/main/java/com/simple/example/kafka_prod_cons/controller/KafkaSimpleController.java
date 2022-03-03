@@ -3,6 +3,7 @@ package com.simple.example.kafka_prod_cons.controller;
 import com.simple.example.kafka_prod_cons.config.KafkaConfigData;
 import com.simple.example.kafka_prod_cons.model.SimpleModel;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,5 +28,10 @@ public class KafkaSimpleController {
     public void post(@RequestBody SimpleModel simpleModel){
         log.info("Received message {}", simpleModel);
         kafkaTemplate.send(kafkaConfigData.getTopicName(),simpleModel);
+    }
+
+    @KafkaListener(topics = "${kafka-config.topic-name}")
+    public void receive(SimpleModel simpleModel){
+        log.info("Received message from kafka {}", simpleModel);
     }
 }
