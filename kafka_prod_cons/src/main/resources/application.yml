@@ -1,0 +1,27 @@
+kafka-producer-config:
+  key-serializer-class: org.apache.kafka.common.serialization.StringSerializer
+  value-serializer-class: org.springframework.kafka.support.serializer.JsonSerializer
+  compression-type: snappy
+  acks: all
+  batch-size: 16384
+  batch-size-boost-factor: 100
+  linger-ms: 5
+  request-timeout-ms: 60000
+  retry-count: 5
+
+kafka-config:
+  bootstrap-servers: localhost:19092
+  schema-registry-url-key: schema.registry.url
+  schema-registry-url: http://localhost:8081
+  topic-name: my-topic
+  topic-names-to-create:
+    - my-topic
+  num-of-partitions: 3
+  replication-factor: 1
+
+retry-config:
+  initial-interval-ms: 3000
+  max-interval-ms: 60000
+  multiplier: 3.0
+  max-attempts: 5
+  sleep-time-ms: 5000
